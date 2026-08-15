@@ -289,9 +289,7 @@ export default function Home() {
               <h2>We Are Hair Play Zone</h2>
               <p className="about-kicker">Our Philosophy</p>
               <p>
-                Hair Play Zone is a beauty salon built around considered care, sharp detail, and a calm appointment
-                experience. We bring together haircuts, styling, grooming, treatments, facials, and color services with
-                an approach that feels personal from the first consultation to the final finish.
+                Hair Play Zone is a beauty salon offering haircuts, styling, grooming, treatments, facials, and color services with personal care from consultation to final finish.
               </p>
               <a href="#contact">Book Now</a>
             </div>
