@@ -1,0 +1,8 @@
+node_modules
+.next
+.env.local
+.env
+.history
+.DS_Store
+npm-debug.log
+coverage
