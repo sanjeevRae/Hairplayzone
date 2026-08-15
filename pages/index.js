@@ -29,6 +29,7 @@ function StoreEntranceSequence() {
   const welcomeCopyRef = useRef(null)
   const detailCopyRef = useRef(null)
   const titleRef = useRef(null)
+  const [isNavOpen, setIsNavOpen] = useState(false)
   const imagesRef = useRef([])
   const frameRef = useRef(0)
   const targetFrameRef = useRef(0)
@@ -161,16 +162,34 @@ function StoreEntranceSequence() {
             Hair Play Zone
           </a>
 
-          <div className="site-nav-links">
-            <a href="#about">About Us</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contacts</a>
-          </div>
+          <button
+            className="site-nav-toggle"
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded={isNavOpen}
+            aria-controls="site-nav-menu"
+            onClick={() => setIsNavOpen((isOpen) => !isOpen)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
 
-          <a className="site-nav-cta" href="#contact">
-            Book an Appointment
-          </a>
+          <div
+            className={`site-nav-menu${isNavOpen ? ' is-open' : ''}`}
+            id="site-nav-menu"
+          >
+            <div className="site-nav-links">
+              <a href="#about" onClick={() => setIsNavOpen(false)}>About Us</a>
+              <a href="#services" onClick={() => setIsNavOpen(false)}>Services</a>
+              <a href="#portfolio" onClick={() => setIsNavOpen(false)}>Portfolio</a>
+              <a href="#contact" onClick={() => setIsNavOpen(false)}>Contacts</a>
+            </div>
+
+            <a className="site-nav-cta" href="#contact" onClick={() => setIsNavOpen(false)}>
+              Book an Appointment
+            </a>
+          </div>
         </nav>
 
         <div className="home-hero-copy home-hero-copy-welcome" ref={welcomeCopyRef}>
