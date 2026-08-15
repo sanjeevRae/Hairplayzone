@@ -26,7 +26,8 @@ function getDateOffset(days) {
 function StoreEntranceSequence() {
   const sectionRef = useRef(null)
   const canvasRef = useRef(null)
-  const copyRef = useRef(null)
+  const welcomeCopyRef = useRef(null)
+  const detailCopyRef = useRef(null)
   const titleRef = useRef(null)
   const imagesRef = useRef([])
   const frameRef = useRef(0)
@@ -36,10 +37,11 @@ function StoreEntranceSequence() {
   useEffect(() => {
     const section = sectionRef.current
     const canvas = canvasRef.current
-    const copy = copyRef.current
+    const welcomeCopy = welcomeCopyRef.current
+    const detailCopy = detailCopyRef.current
     const title = titleRef.current
 
-    if (!section || !canvas || !copy || !title) {
+    if (!section || !canvas || !welcomeCopy || !detailCopy || !title) {
       return undefined
     }
 
@@ -99,7 +101,8 @@ function StoreEntranceSequence() {
       const progress = Math.min(Math.max(-rect.top / scrollableDistance, 0), 1)
 
       targetFrameRef.current = progress * (FRAME_COUNT - 1)
-      copy.classList.toggle('is-visible', progress >= 0.15)
+      welcomeCopy.classList.toggle('is-visible', progress <= 0.3)
+      detailCopy.classList.toggle('is-visible', progress >= 0.5)
       title.classList.toggle('is-visible', progress >= 0.5)
     }
 
@@ -170,8 +173,13 @@ function StoreEntranceSequence() {
           </a>
         </nav>
 
-        <div className="home-hero-copy" ref={copyRef}>
-          <p>Your glow begins here. Welcome to Hair Play Zone.</p>
+        <div className="home-hero-copy home-hero-copy-welcome" ref={welcomeCopyRef}>
+          <p>Welcome to Hair Play Zone.</p>
+          <a href="#contact">Book an Appointment</a>
+        </div>
+
+        <div className="home-hero-copy" ref={detailCopyRef}>
+          <p>Where Your Best Look Begins.</p>
           <a href="#contact">Book an Appointment</a>
         </div>
 

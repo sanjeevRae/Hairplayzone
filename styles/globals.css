@@ -176,10 +176,18 @@ a {
 
 .home-hero-copy p {
 	margin: 0 0 0.44rem;
-	font-size: 1rem;
+	font-size: clamp(1.4rem, 2vw, 2.8rem);
 	font-weight: 650;
 	line-height: 1.35;
 	color: rgba(255, 255, 255, 0.88);
+}
+
+.home-hero-copy-welcome p {
+	max-width: 50rem;
+	font-size: clamp(1.4rem, 2vw, 2.8rem);
+	font-weight: 600;
+	line-height: 0.95;
+	color: #fff;
 }
 
 .home-hero-copy a {
