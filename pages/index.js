@@ -216,6 +216,34 @@ export default function Home() {
   const [contactStatus, setContactStatus] = useState({ type: '', message: '' })
   const [isSendingContact, setIsSendingContact] = useState(false)
 
+  useEffect(() => {
+    const animatedElements = document.querySelectorAll('.about-reveal, .section-reveal')
+
+    if (!animatedElements.length || !('IntersectionObserver' in window)) {
+      animatedElements.forEach((element) => element.classList.add('is-visible'))
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      {
+        rootMargin: '0px 0px -14%',
+        threshold: 0.18,
+      }
+    )
+
+    animatedElements.forEach((element) => observer.observe(element))
+
+    return () => observer.disconnect()
+  }, [])
+
   const handleContactSubmit = async (event) => {
     event.preventDefault()
 
@@ -264,7 +292,7 @@ export default function Home() {
         <StoreEntranceSequence />
 
         <section className="about-section" id="about">
-          <div className="about-stats" aria-label="Salon highlights">
+          <div className="about-stats about-reveal" aria-label="Salon highlights">
             <article>
               <img className="about-stat-icon" src="/haircut.webp" alt="" aria-hidden="true" />
               <h2>100+ haircuts</h2>
@@ -284,8 +312,8 @@ export default function Home() {
             </article>
           </div>
 
-          <div className="about-intro">
-            <div className="about-copy">
+          <div className="about-intro about-reveal">
+            <div className="about-copy about-reveal">
               <h2>We Are Hair Play Zone</h2>
               <p className="about-kicker">Our Philosophy</p>
               <p>
@@ -294,14 +322,14 @@ export default function Home() {
               <a href="#contact">Book Now</a>
             </div>
 
-            <div className="about-collage" aria-label="Hair Play Zone salon image placeholders">
+            <div className="about-collage about-reveal" aria-label="Hair Play Zone salon image placeholders">
               <img className="about-image-placeholder about-collage-main" src="/2.webp" alt="Hair Play Zone salon interior" />
               <img className="about-image-placeholder" src="/1.webp" alt="Hair Play Zone salon styling area" />
               <img className="about-image-placeholder" src="/7.webp" alt="Hair Play Zone hair styling result" />
             </div>
           </div>
 
-          <div className="about-portfolio" id="portfolio">
+          <div className="about-portfolio section-reveal" id="portfolio">
             <div className="about-portfolio-image is-large">
               <img className="about-image-placeholder" src="/9.webp" alt="Hair Play Zone product display" />
             </div>
@@ -331,7 +359,7 @@ export default function Home() {
         </section>
 
         <section className="services-section" id="services">
-          <div className="services-mosaic" aria-label="Hair Play Zone services">
+          <div className="services-mosaic section-reveal" aria-label="Hair Play Zone services">
             <h2>Our Services</h2>
 
             <a className="service-tile service-tile-layers" href="#contact">
@@ -362,7 +390,7 @@ export default function Home() {
             <a className="services-book-now" href="#contact">Book Now</a>
           </div>
 
-          <div className="services-video-placeholder" aria-label="Salon video">
+          <div className="services-video-placeholder section-reveal" aria-label="Salon video">
             {isSalonVideoOpen ? (
               <iframe
                 title="Hair Play Zone balayage hair color and haircut video"
@@ -383,7 +411,7 @@ export default function Home() {
             )}
           </div>
 
-          <div className="services-map" id="location">
+          <div className="services-map section-reveal" id="location">
             <iframe
               title="Hair Play Zone location map"
               frameBorder="0"
