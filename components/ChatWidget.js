@@ -150,7 +150,7 @@ export default function ChatWidget() {
             <div className="chat-widget-brand">
               <img
                 className="chat-widget-logo"
-                src={showThinkingImage ? '/thinking.webp' : '/active.png'}
+                src={showThinkingImage ? 'https://onewaynepal.com/chat-api/logo.webp' : 'https://onewaynepal.com/chat-api/logo.webp'}
                 alt=""
                 aria-hidden="true"
               />
@@ -254,7 +254,7 @@ export default function ChatWidget() {
           onBlur={() => setLauncherActive(false)}
           aria-label="Open chat"
         >
-          <img src={showThinkingImage ? '/thinking.webp' : launcherActive ? '/B.webp' : '/A.webp'} alt="" aria-hidden="true" />
+          <img src={showThinkingImage ? 'https://onewaynepal.com/chat-api/logo.webp' : launcherActive ? 'https://onewaynepal.com/chat-api/logo.webp' : 'https://onewaynepal.com/chat-api/logo.webp'} alt="" aria-hidden="true" />
         </button>
       )}
     </div>
